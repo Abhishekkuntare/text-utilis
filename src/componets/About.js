@@ -1,42 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "./darkBtn.css"
-export default function About() {
+export default function About(props) {
 
-    const [myStyle, setMyStyle] = useState({
-        color: 'black',
-        backgroundColor: 'white',
-        root: 'black'
-    })
+    // const [myStyle, setMyStyle] = useState({
+    //     color: 'black',
+    //     backgroundColor: 'white',
+    // })
 
-
-    const [btnText, setBtnText] = useState("Change Mode")
-
-    const toggleStyle = () => {
-        if (myStyle.color === 'black') {
-            setMyStyle({
-                color: 'white',
-                backgroundColor: 'black'
-            })
-            setBtnText("Enable light mode")
-        }
-
-        else {
-            setMyStyle({
-                color: 'black',
-                backgroundColor: 'white'
-
-            })
-            setBtnText("Enable dark mode")
-
-        }
+    let myStyle = {
+        color: props.mode === 'dark' ? 'white' : '#042743',
+        backgroundColor: props.mode === 'dark' ? '#042743' : 'white'
     }
 
     return (
-        <div classNameName="container" style={myStyle}>
+        <div className="container" style={myStyle}>
 
             <div className="jumbotron" style={myStyle}>
                 <h2 className="display-4">About Us</h2>
-                <p className="lead ">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                <p className="lead ">Copy and paste your text into the online editor to count its words and characters, check keyword density, and correct writing mistakes.</p>
                 <hr className="my-4" />
                 <p>It uses utility classNamees for typography and spacing to space content out within the larger container.
                     Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and <br /> edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come back later. Tip: Bookmark this page now. <br />
@@ -50,9 +31,7 @@ export default function About() {
                     Disclaimer: We strive to make our <br /> tools as accurate as possible but we cannot guarantee it will always be so.
                 </p>
             </div>
-            <div className="container">
-                <button onClick={toggleStyle} type="button" className="btn btn-primary my-2 dark-btn" style={myStyle}>{btnText}</button>
-            </div>
+
 
         </div>
     )
